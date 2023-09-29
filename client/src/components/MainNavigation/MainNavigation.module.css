@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.list li {
+    min-width: 10rem;
+    min-height: 5rem;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    border: 1px solid orange;
+    border-radius: 8px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link.active {
+    background: orange;
+    color: black;
+}

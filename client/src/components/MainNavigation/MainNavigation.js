@@ -1,11 +1,28 @@
 import { NavLink } from 'react-router-dom';
 
-const MainNavigation = () => {
+import classes from './MainNavigation.module.css';
+
+const MainNavigation = (props) => {
     return (
-        <header>
-            <ul>
-                <li><NavLink to="/">Active Tasks</NavLink></li>
-                <li><NavLink to="/completed">Completed Tasks</NavLink></li>
+        <header className={classes.header}>
+            <ul className={classes.list}>
+                <li>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                        end
+                   >
+                        Active Tasks ({props.itemsCount})
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/completed"
+                        className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                    >
+                        Completed Tasks ({props.itemsCount})
+                    </NavLink>
+                </li>
             </ul>
         </header>
     );

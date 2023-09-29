@@ -20,6 +20,14 @@ function App() {
       </header>
     </div>
   );
+import HomePage from './pages/Home/Home';
+import CompletedPage from './pages/Completed/Completed';
+import ErrorPage from './pages/Error/Error';
+        errorElement: <ErrorPage />,
+        children: [
+            { index: true, element: <HomePage /> },
+            { path: 'completed', element: <CompletedPage /> }
+        ]
 }
 
 export default App;

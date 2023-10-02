@@ -17,7 +17,6 @@ const dummyTasks = [
     { id: 'id7', description: 'Task 7', isCompleted: true },
 ];
 
-
 const App = () => {
     const [tasks, setTasks] = useState(dummyTasks);
 
@@ -33,7 +32,7 @@ const App = () => {
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <RootLayout />,
+            element: <RootLayout activeTasksCount={activeTasks.length} completedTasksCount={completedTasks.length} />,
             errorElement: <ErrorPage />,
             children: [
                 {

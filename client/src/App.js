@@ -26,6 +26,10 @@ const App = () => {
         setTasks(state => [...state]);
     };
 
+    const createTaskHandler = (task) => {
+        setTasks(state => [task, ...state]);
+    };
+
     const activeTasks = tasks.filter(x => x.isCompleted === false);
     const completedTasks = tasks.filter(x => x.isCompleted === true);
 
@@ -40,6 +44,7 @@ const App = () => {
                     element: <HomePage
                         tasks={activeTasks}
                         changeTaskProgressHandler={changeTaskProgressHandler}
+                        createTaskHandler={createTaskHandler}
                     />
                 },
                 {

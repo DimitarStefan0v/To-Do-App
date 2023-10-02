@@ -9,7 +9,7 @@ import ErrorPage from './pages/Error/Error';
 
 const dummyTasks = [
     { id: 'id1', description: 'Task 1', isCompleted: true },
-    { id: 'id2', description: 'Task 2', isCompleted: false },
+    { id: 'id2', description: 'TesttTesttTesttTesttTesttTesttTesttTesttTesttTestt', isCompleted: false },
     { id: 'id3', description: 'Task 3', isCompleted: false },
     { id: 'id4', description: 'Task 4', isCompleted: false },
     { id: 'id5', description: 'Task 5', isCompleted: false },

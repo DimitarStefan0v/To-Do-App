@@ -27,6 +27,7 @@
 
 .link.active {
     background: orange;
+    text-decoration: underline;
     color: black;
 }
 
@@ -35,7 +36,7 @@
         margin-top: 2rem;
     }
 
-    .list { 
+    .list {
         justify-content: center;
         gap: 2rem;
     }

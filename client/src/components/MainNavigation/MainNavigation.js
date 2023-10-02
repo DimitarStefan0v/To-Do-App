@@ -12,7 +12,7 @@ const MainNavigation = (props) => {
                         className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
                         end
                    >
-                        Active Tasks ({props.activeTasksCount})
+                        Active Tasks ({props.activeTasksCount ?? 0})
                     </NavLink>
                 </li>
                 <li>
@@ -20,7 +20,7 @@ const MainNavigation = (props) => {
                         to="/completed"
                         className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
                     >
-                        Completed Tasks ({props.completedTasksCount})
+                        Completed Tasks ({props.completedTasksCount ?? 0})
                     </NavLink>
                 </li>
             </ul>

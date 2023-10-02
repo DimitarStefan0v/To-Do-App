@@ -1,18 +1,30 @@
-const CompletedPage = (props) => {  
+import TaskList from '../../components/UI/TaskList/TaskList';
+import Task from '../../components/UI/Task/Task';
+
+import classes from '../../components/UI/Task/Task.module.css';
+
+const CompletedPage = (props) => {
 
     const changeTaskHandler = (id) => {
         props.changeTaskProgressHandler(id);
     };
 
+    const tasks = (props.tasks.length > 0
+        ?
+        props.tasks.map(task =>
+            <Task key={task.id}>
+                <input className={classes.status} type="checkbox" onChange={() => changeTaskHandler(task.id)} />
+                <p className={classes.description}>{task.description}</p>
+            </Task>)
+        :
+        <h2>No completed tasks yet!</h2>
+    )
+
     return (
-        <>
-            <h1>Completed Page</h1>
-            {props.tasks.map(task => 
-                <div key={task.id}>
-                    <input type="checkbox" onChange={() => changeTaskHandler(task.id)} />
-                    <p>{task.description}</p>
-                </div>)}
-        </>
+        <TaskList>
+            <h1>Completed Tasks</h1>
+            { tasks }
+        </TaskList>
     );
 };
 

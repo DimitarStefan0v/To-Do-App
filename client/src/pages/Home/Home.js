@@ -22,19 +22,22 @@ const HomePage = (props) => {
 
         if (task.length < 3 || task.length > 50) {
             setShowWarning(true);
-        } else {
-            setShowWarning(false);
-            // TODO fix ID
-            const taskObj = { id: task, description: task, isCompleted: false };
-            props.createTaskHandler(taskObj);
-            setInputValue('');
+            return;
         }
 
-
+        setShowWarning(false);
+        // TODO fix ID
+        const taskObj = { id: task, description: task, isCompleted: false };
+        props.createTaskHandler(taskObj);
+        setInputValue('');
     };
 
     const inputChangeHandler = (ev) => {
         setInputValue(ev.target.value);
+    };
+
+    const deleteHandler = (id) => {
+        props.deleteTaskHandler(id);
     };
 
     const tasks = (props.tasks.length > 0
@@ -46,8 +49,8 @@ const HomePage = (props) => {
                 </Task>
                 <div className={taskClasses.buttons}>
                     <Button onClick={() => changeTaskHandler(task.id)}>Complete</Button>
-                    <Button className="edit">Edit</Button>
-                    <Button className="delete">Delete</Button>
+                    <Button>Edit</Button>
+                    <Button onClick={() => deleteHandler(task.id)}>Delete</Button>
                 </div>
             </div>
         )
@@ -70,7 +73,7 @@ const HomePage = (props) => {
                     placeholder="Enter Quick Task Here" required
                 />
                 {showWarning && warning}
-                <button className={classes['add-button']} type="submit">Add</button>
+                <button className={classes['add-button']} type="submit">+</button>
             </form>
             {tasks}
         </TaskList>

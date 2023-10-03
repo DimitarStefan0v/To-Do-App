@@ -30,6 +30,10 @@ const App = () => {
         setTasks(state => [task, ...state]);
     };
 
+    const deleteTaskHandler = (id) => {
+        setTasks(state => [...state.filter(task => task.id !== id)]);
+    };
+
     const activeTasks = tasks.filter(x => x.isCompleted === false);
     const completedTasks = tasks.filter(x => x.isCompleted === true);
 
@@ -45,6 +49,7 @@ const App = () => {
                         tasks={activeTasks}
                         changeTaskProgressHandler={changeTaskProgressHandler}
                         createTaskHandler={createTaskHandler}
+                        deleteTaskHandler={deleteTaskHandler}
                     />
                 },
                 {
@@ -52,6 +57,7 @@ const App = () => {
                     element: <CompletedPage
                         tasks={completedTasks}
                         changeTaskProgressHandler={changeTaskProgressHandler}
+                        deleteTaskHandler={deleteTaskHandler}
                     />
                 }
             ]

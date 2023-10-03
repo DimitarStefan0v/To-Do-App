@@ -10,6 +10,10 @@ const CompletedPage = (props) => {
         props.changeTaskProgressHandler(id);
     };
 
+    const deleteHandler = (id) => {
+        props.deleteTaskHandler(id);
+    };
+
     const tasks = (props.tasks.length > 0
         ?
         props.tasks.map(task =>
@@ -19,8 +23,8 @@ const CompletedPage = (props) => {
                 </Task>
                 <div className={classes.buttons}>
                     <Button onClick={() => changeTaskHandler(task.id)}>Move Back</Button>
-                    <Button className="edit">Edit</Button>
-                    <Button className="delete">Delete</Button>
+                    <Button>Edit</Button>
+                    <Button onClick={() => deleteHandler(task.id)}>Delete</Button>
                 </div>
             </div>)
         :

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { updateStorage, readStorage } from './utils/updateLocalStorage';
 
 import RootLayout from './pages/Root/Root'
 import HomePage from './pages/Home/Home';
@@ -19,7 +21,16 @@ const dummyTasks = [
 ];
 
 const App = () => {
-    const [tasks, setTasks] = useState(dummyTasks);
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        const initialTasksFromStorage = readStorage();
+        setTasks(initialTasksFromStorage);
+    }, []);
+
+    useEffect(() => {
+        updateStorage(tasks);
+    }, [tasks]);
 
     const changeTaskProgressHandler = (id) => {
         const task = tasks.find(x => x.id === id);

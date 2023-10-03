@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 
 import TaskList from '../../components/UI/TaskList/TaskList';
 import Task from '../../components/UI/Task/Task';
@@ -30,8 +31,8 @@ const HomePage = (props) => {
         }
 
         setShowWarning(false);
-        // TODO fix ID
-        const taskObj = { id: task, description: task, isCompleted: false };
+        const id = uuid();
+        const taskObj = { id: id, description: task, isCompleted: false };
         props.createTaskHandler(taskObj);
         setInputValue('');
     };

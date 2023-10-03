@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import TaskList from '../../components/UI/TaskList/TaskList';
 import Task from '../../components/UI/Task/Task';
 import Button from '../../components/UI/Button/Button';
@@ -5,6 +7,7 @@ import Button from '../../components/UI/Button/Button';
 import classes from '../../components/UI/Task/Task.module.css';
 
 const CompletedPage = (props) => {
+    const navigate = useNavigate();
 
     const changeTaskHandler = (id) => {
         props.changeTaskProgressHandler(id);
@@ -12,6 +15,10 @@ const CompletedPage = (props) => {
 
     const deleteHandler = (id) => {
         props.deleteTaskHandler(id);
+    };
+
+    const handleEditClick = (id) => {
+        return navigate(`/${id}/edit`);
     };
 
     const tasks = (props.tasks.length > 0
@@ -23,7 +30,7 @@ const CompletedPage = (props) => {
                 </Task>
                 <div className={classes.buttons}>
                     <Button onClick={() => changeTaskHandler(task.id)}>Move Back</Button>
-                    <Button>Edit</Button>
+                    <Button onClick={() => handleEditClick(task.id)}>Edit</Button>
                     <Button onClick={() => deleteHandler(task.id)}>Delete</Button>
                 </div>
             </div>)

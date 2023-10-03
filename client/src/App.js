@@ -6,6 +6,7 @@ import RootLayout from './pages/Root/Root'
 import HomePage from './pages/Home/Home';
 import CompletedPage from './pages/Completed/Completed';
 import ErrorPage from './pages/Error/Error';
+import EditPage from './pages/Edit/Edit';
 
 const dummyTasks = [
     { id: 'id1', description: 'Task 1', isCompleted: true },
@@ -34,6 +35,12 @@ const App = () => {
         setTasks(state => [...state.filter(task => task.id !== id)]);
     };
 
+    const editTaskHandler = (id, newDescription) => {
+        const task = tasks.find(x => x.id === id);
+        task.description = newDescription;
+        setTasks(state => [...state]);
+    };
+
     const activeTasks = tasks.filter(x => x.isCompleted === false);
     const completedTasks = tasks.filter(x => x.isCompleted === true);
 
@@ -58,6 +65,13 @@ const App = () => {
                         tasks={completedTasks}
                         changeTaskProgressHandler={changeTaskProgressHandler}
                         deleteTaskHandler={deleteTaskHandler}
+                    />
+                },
+                {
+                    path: ':taskId/edit',
+                    element: <EditPage
+                        editTaskHandler={editTaskHandler}
+                        tasks={tasks}
                     />
                 }
             ]

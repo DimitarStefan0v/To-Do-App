@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import TaskList from '../../components/UI/TaskList/TaskList';
 import Task from '../../components/UI/Task/Task';
 import Button from '../../components/UI/Button/Button';
@@ -10,6 +12,8 @@ import taskClasses from '../../components/UI/Task/Task.module.css';
 const HomePage = (props) => {
     const [showWarning, setShowWarning] = useState(false);
     const [inputValue, setInputValue] = useState('');
+
+    const navigate = useNavigate();
 
     const changeTaskHandler = (id) => {
         props.changeTaskProgressHandler(id);
@@ -40,6 +44,10 @@ const HomePage = (props) => {
         props.deleteTaskHandler(id);
     };
 
+    const handleEditClick = (id) => {
+        return navigate(`/${id}/edit`);
+    };
+
     const tasks = (props.tasks.length > 0
         ?
         props.tasks.map(task =>
@@ -49,7 +57,7 @@ const HomePage = (props) => {
                 </Task>
                 <div className={taskClasses.buttons}>
                     <Button onClick={() => changeTaskHandler(task.id)}>Complete</Button>
-                    <Button>Edit</Button>
+                    <Button onClick={() => handleEditClick(task.id)}>Edit</Button>
                     <Button onClick={() => deleteHandler(task.id)}>Delete</Button>
                 </div>
             </div>

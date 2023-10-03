@@ -10,27 +10,21 @@ import CompletedPage from './pages/Completed/Completed';
 import ErrorPage from './pages/Error/Error';
 import EditPage from './pages/Edit/Edit';
 
-const dummyTasks = [
-    { id: 'id1', description: 'Task 1', isCompleted: true },
-    { id: 'id2', description: 'TesttTesttTesttTesttTesttTesttTesttTesttTesttTestt', isCompleted: false },
-    { id: 'id3', description: 'Task 3', isCompleted: false },
-    { id: 'id4', description: 'Task 4', isCompleted: false },
-    { id: 'id5', description: 'Task 5', isCompleted: false },
-    { id: 'id6', description: 'Task 6', isCompleted: false },
-    { id: 'id7', description: 'Task 7', isCompleted: true },
-];
-
 const App = () => {
     const [tasks, setTasks] = useState([]);
+    const [initialStart, setInitialStart] = useState(true);
 
     useEffect(() => {
         const initialTasksFromStorage = readStorage();
         setTasks(initialTasksFromStorage);
+        setInitialStart(false);
     }, []);
 
     useEffect(() => {
-        updateStorage(tasks);
-    }, [tasks]);
+        if (initialStart === false) {
+            updateStorage(tasks);
+        }
+    }, [tasks, initialStart]);
 
     const changeTaskProgressHandler = (id) => {
         const task = tasks.find(x => x.id === id);

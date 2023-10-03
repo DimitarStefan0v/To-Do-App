@@ -1,7 +1,5 @@
 export const updateStorage = (tasksArr) => {
-    if (tasksArr.length > 0) {
-        localStorage.setItem('tasks', JSON.stringify(tasksArr));
-    }
+    localStorage.setItem('tasks', JSON.stringify(tasksArr));
 };
 
 export const readStorage = () => {

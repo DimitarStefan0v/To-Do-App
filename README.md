@@ -1,5 +1,5 @@
 # To Do App
-Simple To Do App created with React. The purpose of the project is to practice react basisc like passing props, lifting state up, using events and more. Users can add task, then complete it, edit it or delete it. In the project it is used react-routed-dom for navigating between pages and uuid for generating unique ids when creating a new task. It has no back-end, it keeps the tasks in it's state and the client localStorage. 
+Simple To Do App created with React. The purpose of the project is to practice React basics like passing props, lifting state up, using events and more. Users can add task, complete it, edit it or delete it. In the project it is used react-routed-dom for navigating between pages and uuid for generating unique ids when creating a new task. It has no back-end, it keeps the tasks in it's state and the client localStorage. 
 
 ## [Link to the hosted project](https://react-to-do-a5444.web.app)
 

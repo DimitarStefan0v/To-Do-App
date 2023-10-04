@@ -16,7 +16,9 @@ const App = () => {
 
     useEffect(() => {
         const initialTasksFromStorage = readStorage();
-        setTasks(initialTasksFromStorage);
+        if (initialTasksFromStorage) {
+            setTasks(initialTasksFromStorage);
+        } 
         setInitialStart(false);
     }, []);
 
